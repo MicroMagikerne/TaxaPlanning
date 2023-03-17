@@ -15,9 +15,11 @@ public class Worker : BackgroundService
 
     public Worker(ILogger<Worker> logger, IConfiguration configuration)
     {
+        _logger = logger;
         CSVPath = configuration["CSVPath"] ?? string.Empty;
         RHQHN = configuration["RMQHN"] ?? string.Empty;
-        _logger = logger;
+        _logger.LogInformation($"path: {CSVPath}, HostName: {RHQHN}");
+        
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -26,6 +28,7 @@ public class Worker : BackgroundService
         var factory = new ConnectionFactory { HostName = RHQHN };
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
+        _logger.LogInformation($"");
         _logger.LogInformation("Connection til rabbit etableret");
         CSVService service = new CSVService();
 

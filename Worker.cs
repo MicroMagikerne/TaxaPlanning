@@ -15,6 +15,8 @@ public class Worker : BackgroundService
 
     public Worker(ILogger<Worker> logger, IConfiguration configuration)
     {
+        //her brude vi laver flere logging kommandoer og tilføje dynamiske beskeder.
+        //her burde vi også tænke over om der burde være flere env variabler, fx navnet på den queue vi prøver at consume
         CSVPath = configuration["CSVPath"] ?? string.Empty;
         RHQHN = configuration["RMQHN"] ?? string.Empty;
         _logger = logger;
@@ -26,6 +28,7 @@ public class Worker : BackgroundService
         var factory = new ConnectionFactory { HostName = RHQHN };
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
+        //brude gøres dynaisk
         _logger.LogInformation("Connection til rabbit etableret");
         CSVService service = new CSVService();
 

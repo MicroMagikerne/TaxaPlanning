@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-PlanningService-0604a150-5471-409f-9215-7f6674b79b97</UserSecretsId>
     <Ejer>Henrik</Ejer>
-    <PublishVersion>1.0</PublishVersion>
+    <PublishVersion>1.1</PublishVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -28,7 +28,7 @@ public class Worker : BackgroundService
         var factory = new ConnectionFactory { HostName = RHQHN };
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
-        _logger.LogInformation($"Nu er der lavet connetion til:{connection.ToString}");
+        _logger.LogInformation($"Nu er der lavet connection til:{connection.ToString}");
         _logger.LogInformation("Connection til rabbit etableret");
         CSVService service = new CSVService();
 

@@ -33,7 +33,11 @@ public class Worker : BackgroundService
         var factory = new ConnectionFactory { HostName = RHQHN };
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
-
+        var hostName = System.Net.Dns.GetHostName();
+        var ips = System.Net.Dns.GetHostAddresses(hostName);
+        var _ipaddr = ips.First().MapToIPv4().ToString();
+        _logger.LogInformation(1, $"Taxabooking responding from {_ipaddr}");
+        
         _logger.LogInformation($"Nu er der lavet connection til:{connection.ToString}");
 
         _logger.LogInformation("Connection til rabbit etableret");

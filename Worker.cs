@@ -22,7 +22,7 @@ public class Worker : BackgroundService
         //her burde vi også tænke over om der burde være flere env variabler, fx navnet på den queue vi prøver at consume
 
         CSVPath = configuration["CSVPath"] ?? string.Empty;
-        RHQHN = configuration["RMQHN"] ?? string.Empty;
+        RHQHN = configuration["RHQHN"] ?? string.Empty;
         _logger.LogInformation($"path: {CSVPath}, HostName: {RHQHN}");
         
     }

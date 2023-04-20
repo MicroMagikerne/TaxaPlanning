@@ -8,10 +8,13 @@ using System.Text.Json;
 using NLog;
 using NLog.Web;
 
-var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-logger.Debug("init main");
+
 try {
-IHost host = Host.CreateDefaultBuilder(args)
+
+    var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+    logger.Debug("init main");
+    
+    IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
         services.AddHostedService<Worker>();
@@ -27,6 +30,8 @@ logger.Info("jaja");
 host.Run();
 }
 catch(Exception ex){
+
+    var logger = NLog.LogManager.GetCurrentClassLogger();
     logger.Error(ex, "Stopped program because of exception");
 throw;
 }

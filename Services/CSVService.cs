@@ -22,5 +22,10 @@ public void AppendCSV(string path, PlanDTO newplan)
     File.AppendAllText(path, $"{newplan.Kundenavn},{newplan.Starttidspunkt},{newplan.Startsted},{newplan.Slutsted}" + Environment.NewLine);
     
 }
+public void AppendCSV2(string path, Plan newplan)
+{
+    File.AppendAllText(path, $"{newplan.vehicleID},{newplan.ProductionYear},{newplan.Model},{newplan.RepairOrService},{newplan.TurnInDate},{newplan.Description}" + Environment.NewLine);
+    
+}
 }
 
